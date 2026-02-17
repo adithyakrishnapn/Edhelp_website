@@ -11,7 +11,7 @@ const Hero = () => {
             <div className="container-padding relative z-10 text-center">
                 {/* Badge */}
                 <div className="inline-block px-4 py-1.5 rounded-full border border-[var(--color-border)] bg-[var(--color-bg-secondary)] text-[var(--color-accent)] text-sm font-semibold mb-8 animate-slide-up shadow-sm">
-                    🚀 Elevate Your Professional Presence
+                    Elevate Your Professional Presence
                 </div>
 
                 {/* Headline */}
