@@ -19,7 +19,7 @@ const About = () => {
                         {/* Abstract Image Placeholder using CSS */}
                         <div className="aspect-video bg-gradient-to-br from-[var(--color-bg-secondary)] to-[var(--color-border)] rounded-2xl overflow-hidden relative shadow-xl">
                             <div className="absolute inset-0 flex items-center justify-center text-[var(--color-text-secondary)] opacity-20 text-6xl font-bold">
-                                LABEEB
+                                EDhelp
                             </div>
                         </div>
                         <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-[var(--color-accent)] rounded-xl -z-10 opacity-20"></div>
@@ -28,7 +28,7 @@ const About = () => {
                     <div className="space-y-6">
                         <h2 className="text-2xl font-bold text-[var(--color-text-primary)]">Your Partner in Professional Preparation</h2>
                         <p className="text-[var(--color-text-secondary)] leading-relaxed">
-                            At Labeeb Writing & Designs, we understand the power of a first impression. Whether it's a CV that lands you an interview, an academic paper that earns top grades, or a brand identity that captures your audience, we are dedicated to your success.
+                            At EDhelp Writing & Designs, we understand the power of a first impression. Whether it's a CV that lands you an interview, an academic paper that earns top grades, or a brand identity that captures your audience, we are dedicated to your success.
                         </p>
                         <p className="text-[var(--color-text-secondary)] leading-relaxed">
                             Our team consists of expert writers, editors, and designers who bring years of industry experience to every project. We don't just deliver documents; we deliver confidence.
