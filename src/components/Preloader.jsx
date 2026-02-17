@@ -16,7 +16,7 @@ const Preloader = () => {
     if (!loading) return null;
 
     return (
-        <div className={`fixed inset-0 z-50 flex items-center justify-center bg-[var(--color-bg-primary)] transition-opacity duration-500 ${fadeOut ? 'opacity-0' : 'opacity-100'}`}>
+        <div className={`fixed inset-0 z-[9999] flex items-center justify-center bg-[var(--color-bg-primary)] transition-opacity duration-500 ${fadeOut ? 'opacity-0' : 'opacity-100'}`}>
             <div className="relative flex flex-col items-center">
                 {/* Logo Animation */}
                 <div className="text-4xl md:text-6xl font-bold flex gap-2 relative overflow-hidden">
