@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from './Button';
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
     return (
@@ -28,9 +29,9 @@ const Hero = () => {
                     <Button serviceName="All Services" className="w-full md:w-auto text-lg px-8 py-3 shadow-lg hover:shadow-xl">
                         Get Started via WhatsApp
                     </Button>
-                    <a href="#services" className="px-8 py-3 rounded-lg border border-[var(--color-border)] hover:bg-[var(--color-bg-secondary)] transition-colors text-[var(--color-text-primary)] font-semibold w-full md:w-auto">
+                    <Link to="/services" className="px-8 py-3 rounded-lg border border-[var(--color-border)] hover:bg-[var(--color-bg-secondary)] transition-colors text-[var(--color-text-primary)] font-semibold w-full md:w-auto">
                         View Services
-                    </a>
+                    </Link>
                 </div>
             </div>
         </section>

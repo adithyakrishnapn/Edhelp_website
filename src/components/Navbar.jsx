@@ -9,14 +9,26 @@ const Navbar = () => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const location = useLocation();
     const { theme, toggleTheme } = useTheme();
+    // Theme Tutorial Logic
+    const [showTutorial, setShowTutorial] = useState(false);
 
     useEffect(() => {
-        const handleScroll = () => setScrolled(window.scrollY > 20);
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
+        const timer = setTimeout(() => {
+            const hasSeenTutorial = localStorage.getItem('themeTutorialSeen');
+            if (!hasSeenTutorial) {
+                setShowTutorial(true);
+            }
+        }, 3000); // Delay slightly to let page load
+        return () => clearTimeout(timer);
     }, []);
 
-    useEffect(() => setMobileMenuOpen(false), [location]);
+    const handleThemeToggle = () => {
+        toggleTheme();
+        if (showTutorial) {
+            setShowTutorial(false);
+            localStorage.setItem('themeTutorialSeen', 'true');
+        }
+    };
 
     const navLinks = [
         { name: 'Home', path: '/' },
@@ -26,11 +38,8 @@ const Navbar = () => {
     ];
 
     return (
-        <header className="fixed top-0 left-0 right-0 z-40 transition-all duration-300">
-            {/* Top Bar - Hidden on scroll check or maybe always visible? 
-                 User asked for "bar above the navbar". Let's keep it but hide it when scrolled to save space, 
-                 or keep it if it's small. Let's hide it on scroll for a cleaner sticky effect.
-             */}
+        <header className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${mobileMenuOpen ? 'z-[200]' : 'z-40'}`}>
+            {/* Top Bar */}
             <div className={`bg-[var(--color-text-primary)] text-[var(--color-bg-primary)] text-xs transition-all duration-300 ${scrolled ? 'h-0 opacity-0 overflow-hidden py-0' : 'h-10 py-2'}`}>
                 <div className="container-padding flex justify-between items-center h-full">
                     <div className="flex items-center gap-4">
@@ -50,10 +59,10 @@ const Navbar = () => {
             <nav
                 className={`w-full transition-all duration-300 border-b ${scrolled
                     ? 'bg-[var(--color-bg-primary)]/95 backdrop-blur-md border-[var(--color-border)] py-3 shadow-sm'
-                    : 'bg-[var(--color-bg-primary)] border-transparent py-4' // Changed to solid bg to prevent "popping" issues on mobile
+                    : 'bg-[var(--color-bg-primary)] border-transparent py-4'
                     }`}
             >
-                <div className="container-padding flex items-center justify-between">
+                <div className="container-padding flex items-center justify-between relative">
                     {/* Logo */}
                     <Link to="/" className="text-2xl font-bold tracking-tight flex items-center gap-1">
                         <span className="text-[var(--color-accent)]">ED</span>
@@ -72,14 +81,34 @@ const Navbar = () => {
                             </Link>
                         ))}
 
-                        {/* Theme Toggle */}
-                        <button
-                            onClick={toggleTheme}
-                            className="p-2 rounded-full hover:bg-[var(--color-bg-secondary)] text-[var(--color-text-primary)] transition-colors cursor-pointer"
-                            aria-label="Toggle Theme"
-                        >
-                            {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
-                        </button>
+                        {/* Theme Toggle & Tutorial */}
+                        <div className="relative">
+                            <button
+                                onClick={handleThemeToggle}
+                                className={`p-2 rounded-full hover:bg-[var(--color-bg-secondary)] text-[var(--color-text-primary)] transition-colors cursor-pointer relative z-20 ${showTutorial ? 'ring-4 ring-[var(--color-accent)]/50 animate-pulse' : ''}`}
+                                aria-label="Toggle Theme"
+                                id="desktop-theme-toggle"
+                            >
+                                {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+                            </button>
+
+                            {/* Tutorial Popup Desktop */}
+                            {showTutorial && (
+                                <div className="absolute top-14 -left-32 w-64 p-4 bg-[var(--color-bg-secondary)] border border-[var(--color-border)] rounded-xl shadow-2xl z-50 animate-fade-in-delayed">
+                                    <div className="absolute -top-2 left-[8.5rem] w-4 h-4 bg-[var(--color-bg-secondary)] border-l border-t border-[var(--color-border)] transform rotate-45"></div>
+                                    <h4 className="font-bold text-[var(--color-text-primary)] mb-1">Switch Modes Here!</h4>
+                                    <p className="text-sm text-[var(--color-text-secondary)]">
+                                        Tap the moon/sun icon to toggle between Light and Dark mode.
+                                    </p>
+                                    <button
+                                        onClick={() => { setShowTutorial(false); localStorage.setItem('themeTutorialSeen', 'true'); }}
+                                        className="text-xs text-[var(--color-accent)] font-semibold mt-2 hover:underline"
+                                    >
+                                        Got it!
+                                    </button>
+                                </div>
+                            )}
+                        </div>
 
                         <Button serviceName="General Enquiry" className="px-6 py-2 text-sm">
                             Chat with Us
@@ -88,12 +117,29 @@ const Navbar = () => {
 
                     {/* Mobile Toggle & Menu */}
                     <div className="flex items-center gap-4 md:hidden">
-                        <button
-                            onClick={toggleTheme}
-                            className="p-2 rounded-full hover:bg-[var(--color-bg-secondary)] text-[var(--color-text-primary)] transition-colors"
-                        >
-                            {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
-                        </button>
+                        <div className="relative">
+                            <button
+                                onClick={handleThemeToggle}
+                                className={`p-2 rounded-full hover:bg-[var(--color-bg-secondary)] text-[var(--color-text-primary)] transition-colors relative z-20 ${showTutorial ? 'ring-4 ring-[var(--color-accent)]/50 animate-pulse' : ''}`}
+                            >
+                                {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+                            </button>
+                            {/* Tutorial Popup Mobile */}
+                            {showTutorial && (
+                                <div className="absolute top-12 -right-10 w-56 p-4 bg-[var(--color-bg-secondary)] border border-[var(--color-border)] rounded-xl shadow-2xl z-50 animate-fade-in-delayed">
+                                    <div className="absolute -top-2 right-14 w-4 h-4 bg-[var(--color-bg-secondary)] border-l border-t border-[var(--color-border)] transform rotate-45"></div>
+                                    <p className="text-sm text-[var(--color-text-secondary)]">
+                                        <span className="font-bold text-[var(--color-text-primary)]">Try Dark Mode!</span> Tap here to switch.
+                                    </p>
+                                    <button
+                                        onClick={() => { setShowTutorial(false); localStorage.setItem('themeTutorialSeen', 'true'); }}
+                                        className="text-xs text-[var(--color-accent)] font-semibold mt-2 hover:underline"
+                                    >
+                                        Got it!
+                                    </button>
+                                </div>
+                            )}
+                        </div>
 
                         <button
                             className="text-[var(--color-text-primary)] focus:outline-none"
@@ -104,31 +150,42 @@ const Navbar = () => {
                     </div>
                 </div>
             </nav>
-
             {/* Mobile Menu Overlay */}
             <div
-                className={`fixed inset-0 bg-[var(--color-bg-primary)] z-30 flex flex-col items-center justify-center space-y-8 transition-transform duration-300 md:hidden ${mobileMenuOpen ? 'translate-y-0' : '-translate-y-full'
+                className={`fixed inset-0 bg-[var(--color-bg-primary)]/95 backdrop-blur-xl z-[100] flex flex-col items-center justify-center space-y-8 transition-all duration-500 md:hidden ${mobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'
                     }`}
-                style={{ top: '0', paddingTop: '80px' }} // Ensure it covers screen but respects header z-index if needed
             >
-                {navLinks.map((link) => (
-                    <Link
-                        key={link.name}
-                        to={link.path}
-                        className="text-2xl font-bold text-[var(--color-text-primary)] hover:text-[var(--color-accent)]"
-                    >
-                        {link.name}
-                    </Link>
-                ))}
+                {/* Close Button */}
+                <button
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="absolute top-6 right-6 p-2 rounded-full bg-[var(--color-bg-secondary)] text-[var(--color-text-primary)] hover:rotate-90 transition-transform duration-300"
+                    aria-label="Close Menu"
+                >
+                    <X size={32} />
+                </button>
 
-                {/* Mobile Socials */}
-                <div className="flex gap-6 mt-4 text-[var(--color-text-primary)]">
-                    <a href="#"><Instagram size={24} /></a>
-                    <a href="#"><Linkedin size={24} /></a>
-                    <a href="#"><Facebook size={24} /></a>
+                <div className="flex flex-col items-center space-y-6">
+                    {navLinks.map((link, index) => (
+                        <Link
+                            key={link.name}
+                            to={link.path}
+                            onClick={() => setMobileMenuOpen(false)}
+                            className="text-4xl font-bold text-[var(--color-text-primary)] hover:text-[var(--color-accent)] transition-all transform hover:scale-110"
+                            style={{ transitionDelay: `${index * 100}ms` }}
+                        >
+                            {link.name}
+                        </Link>
+                    ))}
                 </div>
 
-                <Button serviceName="General Enquiry" className="mt-8">
+                {/* Mobile Socials */}
+                <div className="flex gap-8 mt-8">
+                    <a href="#" className="p-3 rounded-full bg-[var(--color-bg-secondary)] text-[var(--color-text-primary)] hover:bg-[var(--color-accent)] hover:text-white transition-all duration-300 hover:-translate-y-1"><Instagram size={28} /></a>
+                    <a href="#" className="p-3 rounded-full bg-[var(--color-bg-secondary)] text-[var(--color-text-primary)] hover:bg-[var(--color-accent)] hover:text-white transition-all duration-300 hover:-translate-y-1"><Linkedin size={28} /></a>
+                    <a href="#" className="p-3 rounded-full bg-[var(--color-bg-secondary)] text-[var(--color-text-primary)] hover:bg-[var(--color-accent)] hover:text-white transition-all duration-300 hover:-translate-y-1"><Facebook size={28} /></a>
+                </div>
+
+                <Button serviceName="General Enquiry" className="mt-8 text-lg px-8 py-3 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                     Chat on WhatsApp
                 </Button>
             </div>
