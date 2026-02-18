@@ -44,7 +44,6 @@ const Navbar = () => {
                 <div className="container-padding flex justify-between items-center h-full">
                     <div className="flex items-center gap-4">
                         <span className="flex items-center gap-1"><Mail size={12} /> info@edhelp.com</span>
-                        <span className="flex items-center gap-1"><Phone size={12} /> +971 50 000 0000</span>
                     </div>
                     <div className="flex items-center gap-3">
                         <a href="#" className="hover:text-[var(--color-accent)] transition-colors"><Instagram size={14} /></a>
@@ -129,7 +128,7 @@ const Navbar = () => {
                                 <div className="absolute top-12 -right-10 w-56 p-4 bg-[var(--color-bg-secondary)] border border-[var(--color-border)] rounded-xl shadow-2xl z-50 animate-fade-in-delayed">
                                     <div className="absolute -top-2 right-14 w-4 h-4 bg-[var(--color-bg-secondary)] border-l border-t border-[var(--color-border)] transform rotate-45"></div>
                                     <p className="text-sm text-[var(--color-text-secondary)]">
-                                        <span className="font-bold text-[var(--color-text-primary)]">Try Dark Mode!</span> Tap here to switch.
+                                        <span className="font-bold text-[var(--color-text-primary)]">Change theme between dark/light</span>
                                     </p>
                                     <button
                                         onClick={() => { setShowTutorial(false); localStorage.setItem('themeTutorialSeen', 'true'); }}
