@@ -8,22 +8,12 @@ const Navbar = () => {
     const location = useLocation();
 
     useEffect(() => {
-        const timer = setTimeout(() => {
-            const hasSeenTutorial = localStorage.getItem('themeTutorialSeen');
-            if (!hasSeenTutorial) {
-                setShowTutorial(true);
-            }
-        }, 3000); // Delay slightly to let page load
-        return () => clearTimeout(timer);
+        const handleScroll = () => setScrolled(window.scrollY > 20);
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    const handleThemeToggle = () => {
-        toggleTheme();
-        if (showTutorial) {
-            setShowTutorial(false);
-            localStorage.setItem('themeTutorialSeen', 'true');
-        }
-    };
+    useEffect(() => setMobileMenuOpen(false), [location]);
 
     // Helper to determine if a link is active
     const isActive = (path) => location.pathname === path;
