@@ -8,12 +8,22 @@ const Navbar = () => {
     const location = useLocation();
 
     useEffect(() => {
-        const handleScroll = () => setScrolled(window.scrollY > 20);
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
+        const timer = setTimeout(() => {
+            const hasSeenTutorial = localStorage.getItem('themeTutorialSeen');
+            if (!hasSeenTutorial) {
+                setShowTutorial(true);
+            }
+        }, 3000); // Delay slightly to let page load
+        return () => clearTimeout(timer);
     }, []);
 
-    useEffect(() => setMobileMenuOpen(false), [location]);
+    const handleThemeToggle = () => {
+        toggleTheme();
+        if (showTutorial) {
+            setShowTutorial(false);
+            localStorage.setItem('themeTutorialSeen', 'true');
+        }
+    };
 
     // Helper to determine if a link is active
     const isActive = (path) => location.pathname === path;
@@ -123,8 +133,8 @@ const Navbar = () => {
                             to={link.path}
                             onClick={() => setMobileMenuOpen(false)}
                             className={`flex items-center w-full px-5 py-4 rounded-xl font-bold text-lg transition-all ${isActive(link.path)
-                                    ? 'bg-[#34d399]/10 text-[#34d399] border-l-4 border-[#34d399]'
-                                    : 'text-white/80 hover:bg-white/5 hover:text-white border-l-4 border-transparent'
+                                ? 'bg-[#34d399]/10 text-[#34d399] border-l-4 border-[#34d399]'
+                                : 'text-white/80 hover:bg-white/5 hover:text-white border-l-4 border-transparent'
                                 }`}
                         >
                             {link.label}
