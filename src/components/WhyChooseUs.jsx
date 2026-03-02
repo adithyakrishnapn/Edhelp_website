@@ -37,7 +37,7 @@ const WhyChooseUs = () => {
                 {/* Section Header with decorative dots */}
                 <div className="flex items-center justify-center gap-4 mb-10 pt-4">
                     <div className="w-2.5 h-2.5 rounded-full bg-[#15803d]"></div>
-                    <h2 className="text-[22px] md:text-[28px] font-extrabold text-[#0a1930] tracking-tight">
+                    <h2 className="text-[22px] md:text-[28px] font-extrabold text-[#0e1a4a] tracking-tight">
                         Why Choose Us?
                     </h2>
                     <div className="w-2.5 h-2.5 rounded-full bg-[#15803d]"></div>

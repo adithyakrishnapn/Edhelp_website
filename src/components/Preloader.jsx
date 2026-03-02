@@ -14,7 +14,7 @@ const Preloader = () => {
     if (!loading) return null;
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#0a1930] transition-opacity duration-300">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#0e1a4a] transition-opacity duration-300">
             <div className="flex flex-col items-center">
                 {/* Animated Logo */}
                 <div className="relative w-16 h-16 flex items-center justify-center mb-6">

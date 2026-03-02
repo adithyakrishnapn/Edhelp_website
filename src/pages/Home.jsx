@@ -15,7 +15,7 @@ const Home = () => {
             <WhyChooseUs />
 
             {/* Pricing Section */}
-            <section className="py-24 bg-[#f0f7fb] relative overflow-hidden">
+            <section className="py-24 bg-[#eeeaf9] relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-b from-transparent to-[#e0f2fe] opacity-50 z-0 pointer-events-none"></div>
 
                 <div className="container-padding relative z-10 w-full max-w-6xl mx-auto">
@@ -23,7 +23,7 @@ const Home = () => {
                     {/* Section Header */}
                     <div className="flex items-center justify-center gap-4 mb-20">
                         <div className="w-2.5 h-2.5 rounded-full bg-[#15803d]"></div>
-                        <h2 className="text-3xl md:text-3xl font-extrabold text-[#0a1930] tracking-tight">
+                        <h2 className="text-3xl md:text-3xl font-extrabold text-[#0e1a4a] tracking-tight">
                             Our Career Support Packages
                         </h2>
                         <div className="w-2.5 h-2.5 rounded-full bg-[#15803d]"></div>

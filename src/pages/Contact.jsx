@@ -22,12 +22,12 @@ const Contact = () => {
 
     return (
         <Layout>
-            <div className="bg-gradient-to-b from-[#f0f7fb] to-white min-h-screen pt-36 pb-20">
+            <div className="bg-gradient-to-b from-[#eeeaf9] to-white min-h-screen pt-36 pb-20">
                 {/* Header */}
                 <div className="container-padding text-center mb-16">
                     <div className="flex items-center justify-center gap-4 mb-6 animate-slide-up">
                         <div className="w-2.5 h-2.5 rounded-full bg-[#15803d]"></div>
-                        <h1 className="text-4xl md:text-5xl font-extrabold text-[#0a1930] tracking-tight">
+                        <h1 className="text-4xl md:text-5xl font-extrabold text-[#0e1a4a] tracking-tight">
                             Contact Us
                         </h1>
                         <div className="w-2.5 h-2.5 rounded-full bg-[#15803d]"></div>
@@ -41,7 +41,7 @@ const Contact = () => {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
                         {/* Contact Info */}
                         <div className="space-y-8">
-                            <h2 className="text-2xl md:text-3xl font-extrabold text-[#0a1930]">Get in Touch</h2>
+                            <h2 className="text-2xl md:text-3xl font-extrabold text-[#0e1a4a]">Get in Touch</h2>
                             <p className="text-[#334155] font-medium leading-relaxed">
                                 Have a question about our packages or need a custom solution? Reach out to us via phone, email, or visit our specialized career center.
                             </p>
@@ -52,7 +52,7 @@ const Contact = () => {
                                         <Phone size={26} strokeWidth={2.5} />
                                     </div>
                                     <div className="pt-1">
-                                        <h3 className="font-extrabold text-[#0a1930] text-lg">Phone / WhatsApp</h3>
+                                        <h3 className="font-extrabold text-[#0e1a4a] text-lg">Phone / WhatsApp</h3>
                                         <p className="text-[#475569] font-medium mt-1">+971 50 000 0000</p>
                                     </div>
                                 </div>
@@ -62,7 +62,7 @@ const Contact = () => {
                                         <Mail size={26} strokeWidth={2.5} />
                                     </div>
                                     <div className="pt-1">
-                                        <h3 className="font-extrabold text-[#0a1930] text-lg">Email Address</h3>
+                                        <h3 className="font-extrabold text-[#0e1a4a] text-lg">Email Address</h3>
                                         <p className="text-[#475569] font-medium mt-1">careers@nextstep.ae</p>
                                     </div>
                                 </div>
@@ -72,7 +72,7 @@ const Contact = () => {
                                         <MapPin size={26} strokeWidth={2.5} />
                                     </div>
                                     <div className="pt-1">
-                                        <h3 className="font-extrabold text-[#0a1930] text-lg">Office Location</h3>
+                                        <h3 className="font-extrabold text-[#0e1a4a] text-lg">Office Location</h3>
                                         <p className="text-[#475569] font-medium mt-1 pb-2">Business Bay, Dubai, UAE</p>
                                     </div>
                                 </div>
@@ -89,7 +89,7 @@ const Contact = () => {
 
                         {/* Contact Form */}
                         <div className="bg-white p-8 md:p-10 rounded-3xl border border-slate-200 shadow-xl">
-                            <h2 className="text-3xl font-extrabold text-[#0a1930] mb-8">Send us a message</h2>
+                            <h2 className="text-3xl font-extrabold text-[#0e1a4a] mb-8">Send us a message</h2>
                             <form onSubmit={handleSubmit} className="space-y-6">
                                 <div>
                                     <label className="block text-sm font-bold text-[#334155] mb-2 uppercase tracking-wide">Full Name</label>
@@ -98,7 +98,7 @@ const Contact = () => {
                                         name="name"
                                         value={formData.name}
                                         onChange={handleChange}
-                                        className="w-full px-5 py-3.5 rounded-xl bg-slate-50 border border-slate-300 text-[#0a1930] font-medium focus:outline-none focus:ring-2 focus:ring-[#16a34a]/30 focus:border-[#16a34a] transition-all"
+                                        className="w-full px-5 py-3.5 rounded-xl bg-slate-50 border border-slate-300 text-[#0e1a4a] font-medium focus:outline-none focus:ring-2 focus:ring-[#16a34a]/30 focus:border-[#16a34a] transition-all"
                                         placeholder="Your Name"
                                         required
                                     />
@@ -110,7 +110,7 @@ const Contact = () => {
                                         name="email"
                                         value={formData.email}
                                         onChange={handleChange}
-                                        className="w-full px-5 py-3.5 rounded-xl bg-slate-50 border border-slate-300 text-[#0a1930] font-medium focus:outline-none focus:ring-2 focus:ring-[#16a34a]/30 focus:border-[#16a34a] transition-all"
+                                        className="w-full px-5 py-3.5 rounded-xl bg-slate-50 border border-slate-300 text-[#0e1a4a] font-medium focus:outline-none focus:ring-2 focus:ring-[#16a34a]/30 focus:border-[#16a34a] transition-all"
                                         placeholder="you@email.com"
                                         required
                                     />
@@ -121,7 +121,7 @@ const Contact = () => {
                                         name="service"
                                         value={formData.service}
                                         onChange={handleChange}
-                                        className="w-full px-5 py-3.5 rounded-xl bg-slate-50 border border-slate-300 text-[#0a1930] font-medium focus:outline-none focus:ring-2 focus:ring-[#16a34a]/30 focus:border-[#16a34a] transition-all appearance-none cursor-pointer"
+                                        className="w-full px-5 py-3.5 rounded-xl bg-slate-50 border border-slate-300 text-[#0e1a4a] font-medium focus:outline-none focus:ring-2 focus:ring-[#16a34a]/30 focus:border-[#16a34a] transition-all appearance-none cursor-pointer"
                                     >
                                         <option>CV & Resume Writing</option>
                                         <option>Academic Editing</option>
@@ -137,7 +137,7 @@ const Contact = () => {
                                         value={formData.message}
                                         onChange={handleChange}
                                         rows="4"
-                                        className="w-full px-5 py-3.5 rounded-xl bg-slate-50 border border-slate-300 text-[#0a1930] font-medium focus:outline-none focus:ring-2 focus:ring-[#16a34a]/30 focus:border-[#16a34a] transition-all resize-none"
+                                        className="w-full px-5 py-3.5 rounded-xl bg-slate-50 border border-slate-300 text-[#0e1a4a] font-medium focus:outline-none focus:ring-2 focus:ring-[#16a34a]/30 focus:border-[#16a34a] transition-all resize-none"
                                         placeholder="How can we help you achieve your goals?"
                                         required
                                     ></textarea>

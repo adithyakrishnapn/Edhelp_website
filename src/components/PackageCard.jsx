@@ -9,14 +9,14 @@ const PackageCard = ({ title, price, features, type = 'basic', badge, buttonText
         basic: {
             wrapper: "bg-white border-[#e2e8f0] border shadow-md",
             header: "py-6 text-center border-b border-[#f1f5f9]",
-            titleText: "text-[19px] font-bold text-[#0a1930]",
-            priceText: "text-[32px] md:text-[40px] font-extrabold text-[#0a1930] leading-none",
-            button: "bg-[#0a1930] hover:bg-[#1e3a8a] text-white shadow-md font-bold text-lg",
+            titleText: "text-[19px] font-bold text-[#0e1a4a]",
+            priceText: "text-[32px] md:text-[40px] font-extrabold text-[#0e1a4a] leading-none",
+            button: "bg-[#0e1a4a] hover:bg-[#1e3a8a] text-white shadow-md font-bold text-lg",
             checkIcon: "text-[#16a34a]"
         },
         popular: {
             wrapper: "bg-white border-2 border-[#16a34a] shadow-[0_10px_40px_-10px_rgba(22,163,74,0.3)] scale-[1.03] z-10 relative overflow-hidden",
-            header: "bg-[#0a1930] py-8 text-center",
+            header: "bg-[#0e1a4a] py-8 text-center",
             titleText: "text-[19px] font-bold text-white",
             priceText: "text-[32px] md:text-[40px] font-extrabold text-[#fef08a] leading-none",
             button: "bg-[#16a34a] hover:bg-[#15803d] text-white font-bold text-lg shadow-[0_4px_14px_0_rgba(22,163,74,0.39)]",
@@ -24,10 +24,10 @@ const PackageCard = ({ title, price, features, type = 'basic', badge, buttonText
         },
         premium: {
             wrapper: "bg-white border-[#e2e8f0] border shadow-md relative mt-6 md:mt-0 overflow-hidden",
-            header: "bg-[#0a1930] py-6 text-center",
+            header: "bg-[#0e1a4a] py-6 text-center",
             titleText: "text-[19px] font-bold text-white",
             priceText: "text-[32px] md:text-[40px] font-extrabold text-[#fef08a] leading-none",
-            button: "bg-[#0a1930] hover:bg-[#1e3a8a] text-white shadow-md font-bold text-lg",
+            button: "bg-[#0e1a4a] hover:bg-[#1e3a8a] text-white shadow-md font-bold text-lg",
             checkIcon: "text-[#1e3a8a]"
         }
     };
@@ -59,7 +59,7 @@ const PackageCard = ({ title, price, features, type = 'basic', badge, buttonText
 
             {/* Badge for Premium (floating on the right of the header instead) */}
             {type === 'premium' && badge && (
-                <div className="absolute top-0 right-0 bg-gradient-to-r from-[#fbbf24] to-[#f59e0b] text-[#0a1930] px-4 py-1.5 rounded-bl-xl text-[11px] font-bold shadow-md uppercase tracking-wide">
+                <div className="absolute top-0 right-0 bg-gradient-to-r from-[#fbbf24] to-[#f59e0b] text-[#0e1a4a] px-4 py-1.5 rounded-bl-xl text-[11px] font-bold shadow-md uppercase tracking-wide">
                     {badge}
                 </div>
             )}

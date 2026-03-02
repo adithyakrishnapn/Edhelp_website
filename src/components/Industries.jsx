@@ -12,13 +12,13 @@ const Industries = () => {
     ];
 
     return (
-        <section className="py-16 bg-gradient-to-b from-[#f0f7fb] to-white relative overflow-hidden">
+        <section className="py-16 bg-gradient-to-b from-[#eeeaf9] to-white relative overflow-hidden">
             <div className="container-padding max-w-5xl mx-auto">
 
                 {/* Section Header */}
                 <div className="flex items-center justify-center gap-4 mb-10">
                     <div className="w-2.5 h-2.5 rounded-full bg-[#15803d]"></div>
-                    <h2 className="text-2xl md:text-3xl font-bold text-[#0a1930] tracking-tight">
+                    <h2 className="text-2xl md:text-3xl font-bold text-[#0e1a4a] tracking-tight">
                         How It Works
                     </h2>
                     <div className="w-2.5 h-2.5 rounded-full bg-[#15803d]"></div>
@@ -29,14 +29,14 @@ const Industries = () => {
                     {industries.map((ind, index) => {
                         if (typeof ind === 'string') {
                             return (
-                                <div key={index} className="bg-white px-5 py-2.5 rounded-md shadow-sm border border-[#e2e8f0] text-[#0a1930] font-semibold text-sm md:text-base tracking-wide hover:border-[#bae6fd] hover:shadow-md transition-all cursor-default">
+                                <div key={index} className="bg-white px-5 py-2.5 rounded-md shadow-sm border border-[#e2e8f0] text-[#0e1a4a] font-semibold text-sm md:text-base tracking-wide hover:border-[#bae6fd] hover:shadow-md transition-all cursor-default">
                                     {ind}
                                 </div>
                             );
                         } else {
                             // Specialized object rendering
                             return (
-                                <div key={index} className="bg-white px-5 py-2.5 rounded-md shadow-sm border border-[#e2e8f0] text-[#0a1930] font-semibold text-sm md:text-base tracking-wide hover:border-[#bae6fd] hover:shadow-md transition-all cursor-default flex items-center gap-1.5">
+                                <div key={index} className="bg-white px-5 py-2.5 rounded-md shadow-sm border border-[#e2e8f0] text-[#0e1a4a] font-semibold text-sm md:text-base tracking-wide hover:border-[#bae6fd] hover:shadow-md transition-all cursor-default flex items-center gap-1.5">
                                     <span className={ind.color}>{ind.name}</span>
                                     <span className="text-[#64748b] text-[13px] font-medium">{ind.span}</span>
                                 </div>

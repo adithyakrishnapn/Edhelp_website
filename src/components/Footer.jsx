@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
-        <footer className="bg-gradient-to-r from-[#0a1930] to-[#042f2e] text-white pt-16 pb-6 relative overflow-hidden">
+        <footer className="bg-gradient-to-r from-[#0e1a4a] to-[#070d25] text-white pt-16 pb-6 relative overflow-hidden">
             {/* Subtle decorative background slash / tick */}
             <div className="absolute right-0 bottom-0 opacity-10 min-w-[300px] h-full pointer-events-none">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" className="w-[400px] h-[400px] absolute -right-20 -bottom-20 rotate-12">

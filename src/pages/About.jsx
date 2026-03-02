@@ -5,13 +5,13 @@ import Button from '../components/Button';
 const About = () => {
     return (
         <Layout>
-            <div className="bg-gradient-to-b from-[#f0f7fb] to-white min-h-screen pt-36 pb-20">
+            <div className="bg-gradient-to-b from-[#eeeaf9] to-white min-h-screen pt-36 pb-20">
 
                 {/* Header */}
                 <div className="container-padding text-center mb-16">
                     <div className="flex items-center justify-center gap-4 mb-6">
                         <div className="w-2.5 h-2.5 rounded-full bg-[#15803d]"></div>
-                        <h1 className="text-4xl md:text-5xl font-extrabold text-[#0a1930] tracking-tight animate-slide-up">
+                        <h1 className="text-4xl md:text-5xl font-extrabold text-[#0e1a4a] tracking-tight animate-slide-up">
                             About NextStep
                         </h1>
                         <div className="w-2.5 h-2.5 rounded-full bg-[#15803d]"></div>
@@ -30,7 +30,7 @@ const About = () => {
                     </div>
 
                     <div className="space-y-6">
-                        <h2 className="text-2xl md:text-3xl font-extrabold text-[#0a1930]">Your Partner in Professional Preparation</h2>
+                        <h2 className="text-2xl md:text-3xl font-extrabold text-[#0e1a4a]">Your Partner in Professional Preparation</h2>
                         <p className="text-[#334155] leading-relaxed font-medium">
                             At NextStep UAE Careers, we understand the power of a first impression in the highly competitive Emirates job market. Whether it's a CV that lands you an interview, an optimized LinkedIn profile, or targeted job applications, we are absolutely dedicated to your success.
                         </p>

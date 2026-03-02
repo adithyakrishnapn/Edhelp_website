@@ -23,7 +23,7 @@ const Navbar = () => {
             {/* Navbar Main */}
             <nav
                 className={`w-full transition-all duration-300 ${scrolled || location.pathname !== '/'
-                    ? 'bg-[#0a1930] py-3 shadow-lg'
+                    ? 'bg-[#0e1a4a] py-3 shadow-lg'
                     : 'bg-transparent py-5'
                     }`}
             >
@@ -58,8 +58,8 @@ const Navbar = () => {
                                     key={link.path}
                                     to={link.path}
                                     className={`px-4 py-2 rounded-lg font-bold text-sm transition-all duration-200 ${isActive(link.path)
-                                            ? 'bg-white/10 text-[#34d399]'
-                                            : 'text-white/80 hover:bg-white/5 hover:text-white'
+                                        ? 'bg-white/10 text-[#34d399]'
+                                        : 'text-white/80 hover:bg-white/5 hover:text-white'
                                         }`}
                                 >
                                     {link.label}
@@ -79,22 +79,39 @@ const Navbar = () => {
                     {/* Mobile Toggle */}
                     <div className="flex items-center gap-4 md:hidden">
                         <button
-                            className="focus:outline-none text-white"
-                            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                            className="focus:outline-none text-white p-1 hover:bg-white/10 rounded-lg transition-colors"
+                            onClick={() => setMobileMenuOpen(true)}
                         >
-                            {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+                            <Menu size={28} />
                         </button>
                     </div>
                 </div>
             </nav>
 
-            {/* Mobile Menu Overlay */}
+            {/* Mobile Menu Backdrop */}
             <div
-                className={`fixed inset-0 bg-[#0a1930] z-30 flex flex-col items-center justify-center space-y-8 transition-transform duration-300 md:hidden ${mobileMenuOpen ? 'translate-y-0' : '-translate-y-full'
+                className={`fixed inset-0 bg-[#070d25]/80 backdrop-blur-sm z-40 transition-opacity duration-300 md:hidden ${mobileMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
                     }`}
-                style={{ top: '0', paddingTop: '80px' }}
+                onClick={() => setMobileMenuOpen(false)}
+            />
+
+            {/* Mobile Menu Drawer */}
+            <div
+                className={`fixed top-0 right-0 bottom-0 w-[80%] max-w-sm bg-[#0e1a4a] border-l border-white/10 z-50 flex flex-col shadow-2xl transition-transform duration-300 ease-out md:hidden ${mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+                    }`}
             >
-                <div className="flex flex-col items-center gap-4 mt-8 w-full max-w-[200px]">
+                <div className="flex items-center justify-between p-6 border-b border-white/10">
+                    <span className="text-xl font-extrabold text-white tracking-tight">Menu</span>
+                    <button
+                        onClick={() => setMobileMenuOpen(false)}
+                        className="p-2 bg-white/5 hover:bg-white/20 rounded-full text-white transition-colors"
+                        aria-label="Close menu"
+                    >
+                        <X size={24} />
+                    </button>
+                </div>
+
+                <div className="flex flex-col gap-2 p-6 flex-grow overflow-y-auto">
                     {[
                         { path: '/', label: 'Home' },
                         { path: '/services', label: 'Services' },
@@ -105,9 +122,9 @@ const Navbar = () => {
                             key={link.path}
                             to={link.path}
                             onClick={() => setMobileMenuOpen(false)}
-                            className={`w-full text-center px-4 py-3 rounded-xl font-bold text-xl transition-all ${isActive(link.path)
-                                    ? 'bg-white/10 text-[#34d399]'
-                                    : 'text-white/80 hover:bg-white/5 hover:text-white'
+                            className={`flex items-center w-full px-5 py-4 rounded-xl font-bold text-lg transition-all ${isActive(link.path)
+                                    ? 'bg-[#34d399]/10 text-[#34d399] border-l-4 border-[#34d399]'
+                                    : 'text-white/80 hover:bg-white/5 hover:text-white border-l-4 border-transparent'
                                 }`}
                         >
                             {link.label}
@@ -115,9 +132,11 @@ const Navbar = () => {
                     ))}
                 </div>
 
-                <div className="flex items-center gap-2 bg-[#fef08a]/20 border border-[#fef08a]/30 text-yellow-100 px-4 py-2 rounded-full text-sm font-medium mt-8">
-                    <Clock size={16} className="text-[#fbbf24]" />
-                    Limited slots available
+                <div className="p-6 border-t border-white/10 mt-auto">
+                    <div className="flex items-center justify-center gap-2 w-full bg-[#fef08a]/10 border border-[#fef08a]/20 text-yellow-200 px-4 py-3.5 rounded-xl text-sm font-medium">
+                        <Clock size={18} className="text-[#fbbf24]" />
+                        Limited slots available
+                    </div>
                 </div>
             </div>
         </header>

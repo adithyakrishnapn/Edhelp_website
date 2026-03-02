@@ -7,13 +7,13 @@ const Hero = () => {
         <section
             className="relative min-h-[90vh] flex flex-col justify-center overflow-hidden pt-36 pb-32 bg-cover bg-center"
             style={{
-                backgroundImage: `url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&q=80&w=1920')`,
+                backgroundImage: `url('/hero_person_bg.png')`,
                 backgroundPosition: 'center',
                 backgroundSize: 'cover'
             }}
         >
             {/* Top dark gradient overlay for text readability */}
-            <div className="absolute inset-0 bg-gradient-to-r from-[#0a1930] via-[#0a1930]/80 to-[#0a1930]/30 -z-10"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0e1a4a] via-[#0e1a4a]/80 to-[#0e1a4a]/30 -z-10"></div>
 
             <div className="container-padding relative z-10 w-full max-w-5xl mx-auto md:ml-[10%] pt-8">
                 {/* Headline */}
@@ -31,7 +31,7 @@ const Hero = () => {
                 </div>
 
                 {/* Professionals Badge */}
-                <div className="inline-block bg-white/90 backdrop-blur-md border border-white/20 text-[#0a1930] px-6 py-3 rounded-lg shadow-xl text-[15px] md:text-base font-bold mb-10 animate-slide-up tracking-wider" style={{ animationDelay: '200ms' }}>
+                <div className="inline-block bg-white/90 backdrop-blur-md border border-white/20 text-[#0e1a4a] px-6 py-3 rounded-lg shadow-xl text-[15px] md:text-base font-bold mb-10 animate-slide-up tracking-wider" style={{ animationDelay: '200ms' }}>
                     For Professionals in Technology, Business & <span className="text-[#15803d]">Healthcare</span>
                 </div>
 

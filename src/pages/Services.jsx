@@ -7,13 +7,13 @@ import { packages } from '../data/packages';
 const Services = () => {
     return (
         <Layout>
-            <div className="pt-36 pb-20 bg-gradient-to-b from-[#f0f7fb] to-white min-h-screen">
+            <div className="pt-36 pb-20 bg-gradient-to-b from-[#eeeaf9] to-white min-h-screen">
 
                 {/* Header */}
                 <div className="container-padding text-center mb-16">
                     <div className="flex items-center justify-center gap-4 mb-6 animate-slide-up">
                         <div className="w-2.5 h-2.5 rounded-full bg-[#15803d]"></div>
-                        <h1 className="text-4xl md:text-5xl font-extrabold text-[#0a1930] tracking-tight">
+                        <h1 className="text-4xl md:text-5xl font-extrabold text-[#0e1a4a] tracking-tight">
                             Our Services
                         </h1>
                         <div className="w-2.5 h-2.5 rounded-full bg-[#15803d]"></div>
@@ -28,7 +28,7 @@ const Services = () => {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
                         <div className="animate-slide-up">
                             <span className="text-[#16a34a] font-bold tracking-wider uppercase text-sm mb-2 block">Career Success</span>
-                            <h2 className="text-3xl md:text-4xl font-extrabold text-[#0a1930] mb-6">Our Career Support Packages</h2>
+                            <h2 className="text-3xl md:text-4xl font-extrabold text-[#0e1a4a] mb-6">Our Career Support Packages</h2>
                             <p className="text-[#334155] text-lg leading-relaxed mb-6 font-medium">
                                 In today's highly competitive Gulf job market, your application package is your most powerful asset. Select the pathway that best accelerates your career journey.
                             </p>
@@ -53,7 +53,7 @@ const Services = () => {
                                     alt="Professional Career Support"
                                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                                 />
-                                <div className="absolute inset-0 bg-gradient-to-t from-[#0a1930]/90 to-transparent flex items-end p-8">
+                                <div className="absolute inset-0 bg-gradient-to-t from-[#0e1a4a]/90 to-transparent flex items-end p-8">
                                     <span className="text-white font-bold text-xl drop-shadow-md">Professional Career Support</span>
                                 </div>
                             </div>
