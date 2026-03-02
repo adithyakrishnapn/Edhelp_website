@@ -1,57 +1,49 @@
 import React from 'react';
+import { MessageCircle, Check } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { Instagram, Linkedin, Facebook, Twitter } from 'lucide-react';
 
 const Footer = () => {
     return (
-        <footer className="bg-[var(--color-bg-secondary)] border-t border-[var(--color-border)] pt-16 pb-8">
-            <div className="container-padding">
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-                    {/* Brand */}
-                    <div className="col-span-1 md:col-span-2">
-                        <h2 className="text-3xl font-bold mb-4">
-                            <span className="text-[var(--color-accent)]">ED</span>
-                            <span className="text-[var(--color-text-primary)]">help</span>
-                        </h2>
-                        <p className="text-[var(--color-text-secondary)] max-w-sm mb-6">
-                            Your partner for professional writing, academic excellence, and cutting-edge digital designs. We bring your ideas to life with style and precision.
-                        </p>
-                    </div>
+        <footer className="bg-gradient-to-r from-[#0a1930] to-[#042f2e] text-white pt-16 pb-6 relative overflow-hidden">
+            {/* Subtle decorative background slash / tick */}
+            <div className="absolute right-0 bottom-0 opacity-10 min-w-[300px] h-full pointer-events-none">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" className="w-[400px] h-[400px] absolute -right-20 -bottom-20 rotate-12">
+                    <path d="M20 6L9 17l-5-5" />
+                </svg>
+            </div>
 
-                    {/* Quick Links */}
-                    <div>
-                        <h3 className="text-[var(--color-text-primary)] font-bold mb-6">Explore</h3>
-                        <ul className="space-y-4">
-                            <li><Link to="/" className="text-[var(--color-text-secondary)] hover:text-[var(--color-accent)] transition-colors">Home</Link></li>
-                            <li><Link to="/services" className="text-[var(--color-text-secondary)] hover:text-[var(--color-accent)] transition-colors">Services</Link></li>
-                            <li><Link to="/about" className="text-[var(--color-text-secondary)] hover:text-[var(--color-accent)] transition-colors">About Us</Link></li>
-                        </ul>
-                    </div>
+            <div className="container-padding relative z-10 text-center max-w-4xl mx-auto">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-2">
+                    Let Us Handle the Job Search Stress
+                </h2>
+                <p className="text-[#94a3b8] text-lg md:text-xl font-medium mb-10">
+                    You Focus on Interviews — We Handle the Strategy
+                </p>
 
-                    {/* Contact */}
-                    <div>
-                        <h3 className="text-[var(--color-text-primary)] font-bold mb-6">Connect</h3>
-                        <p className="text-[var(--color-text-secondary)] mb-2">Dubai, UAE</p>
-                        <p className="text-[var(--color-text-secondary)] mb-2">Coming Soon: App Store</p>
-                        <div className="mt-4 flex space-x-4">
-                            <a href="#" className="w-10 h-10 rounded-full bg-[var(--color-bg-primary)] border border-[var(--color-border)] flex items-center justify-center hover:bg-[var(--color-accent)] hover:text-white transition-all cursor-pointer shadow-sm">
-                                <Instagram size={20} />
-                            </a>
-                            <a href="#" className="w-10 h-10 rounded-full bg-[var(--color-bg-primary)] border border-[var(--color-border)] flex items-center justify-center hover:bg-[var(--color-accent)] hover:text-white transition-all cursor-pointer shadow-sm">
-                                <Linkedin size={20} />
-                            </a>
-                            <a href="#" className="w-10 h-10 rounded-full bg-[var(--color-bg-primary)] border border-[var(--color-border)] flex items-center justify-center hover:bg-[var(--color-accent)] hover:text-white transition-all cursor-pointer shadow-sm">
-                                <Facebook size={20} />
-                            </a>
-                            <a href="#" className="w-10 h-10 rounded-full bg-[var(--color-bg-primary)] border border-[var(--color-border)] flex items-center justify-center hover:bg-[var(--color-accent)] hover:text-white transition-all cursor-pointer shadow-sm">
-                                <Twitter size={20} />
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                <a
+                    href="https://wa.me/971500000000"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 bg-gradient-to-r from-[#16a34a] to-[#15803d] hover:from-[#15803d] hover:to-[#166534] text-white px-8 py-4 rounded-full text-lg md:text-xl font-bold shadow-xl hover:shadow-2xl transition-all hover:-translate-y-1 transform border border-[#22c55e]/30 mb-16"
+                >
+                    <MessageCircle size={28} className="fill-white/20" />
+                    Talk to a Career Expert on WhatsApp
+                </a>
 
-                <div className="border-t border-[var(--color-border)] pt-8 text-center text-[var(--color-text-secondary)] text-sm">
-                    &copy; {new Date().getFullYear()} EDhelp. All rights reserved.
+                {/* Footer Bottom Bar */}
+                <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 text-sm md:text-base text-[#94a3b8] font-medium border-t border-[#334155] pt-6 flex-wrap">
+                    <div className="flex items-center gap-2">
+                        <span className="text-yellow-400">🔒</span>
+                        <span>100% Confidential</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                        <Check size={18} className="text-[#22c55e]" />
+                        <span>No Fake Promises</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                        <Check size={18} className="text-[#22c55e]" />
+                        <span>Limited Monthly Slots</span>
+                    </div>
                 </div>
             </div>
         </footer>

@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import Button from './Button';
-import { useTheme } from '../context/ThemeContext';
-import { Menu, X, Sun, Moon, Instagram, Linkedin, Facebook, Twitter, Mail, Phone } from 'lucide-react';
+import { Menu, X, Clock } from 'lucide-react';
 
 const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const location = useLocation();
-    const { theme, toggleTheme } = useTheme();
 
     useEffect(() => {
         const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -18,88 +15,74 @@ const Navbar = () => {
 
     useEffect(() => setMobileMenuOpen(false), [location]);
 
-    const navLinks = [
-        { name: 'Home', path: '/' },
-        { name: 'Services', path: '/services' },
-        { name: 'About', path: '/about' },
-        { name: 'Contact', path: '/contact' },
-    ];
+    // Helper to determine if a link is active
+    const isActive = (path) => location.pathname === path;
 
     return (
         <header className="fixed top-0 left-0 right-0 z-40 transition-all duration-300">
-            {/* Top Bar - Hidden on scroll check or maybe always visible? 
-                 User asked for "bar above the navbar". Let's keep it but hide it when scrolled to save space, 
-                 or keep it if it's small. Let's hide it on scroll for a cleaner sticky effect.
-             */}
-            <div className={`bg-[var(--color-text-primary)] text-[var(--color-bg-primary)] text-xs transition-all duration-300 ${scrolled ? 'h-0 opacity-0 overflow-hidden py-0' : 'h-10 py-2'}`}>
-                <div className="container-padding flex justify-between items-center h-full">
-                    <div className="flex items-center gap-4">
-                        <span className="flex items-center gap-1"><Mail size={12} /> info@edhelp.com</span>
-                        <span className="flex items-center gap-1"><Phone size={12} /> +971 50 000 0000</span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                        <a href="#" className="hover:text-[var(--color-accent)] transition-colors"><Instagram size={14} /></a>
-                        <a href="#" className="hover:text-[var(--color-accent)] transition-colors"><Linkedin size={14} /></a>
-                        <a href="#" className="hover:text-[var(--color-accent)] transition-colors"><Facebook size={14} /></a>
-                        <a href="#" className="hover:text-[var(--color-accent)] transition-colors"><Twitter size={14} /></a>
-                    </div>
-                </div>
-            </div>
-
             {/* Navbar Main */}
             <nav
-                className={`w-full transition-all duration-300 border-b ${scrolled
-                    ? 'bg-[var(--color-bg-primary)]/95 backdrop-blur-md border-[var(--color-border)] py-3 shadow-sm'
-                    : 'bg-[var(--color-bg-primary)] border-transparent py-4' // Changed to solid bg to prevent "popping" issues on mobile
+                className={`w-full transition-all duration-300 ${scrolled || location.pathname !== '/'
+                    ? 'bg-[#0a1930] py-3 shadow-lg'
+                    : 'bg-transparent py-5'
                     }`}
             >
                 <div className="container-padding flex items-center justify-between">
-                    {/* Logo */}
-                    <Link to="/" className="text-2xl font-bold tracking-tight flex items-center gap-1">
-                        <span className="text-[var(--color-accent)]">ED</span>
-                        <span className="text-[var(--color-text-primary)]">help</span>
-                    </Link>
+                    {/* Logo Area */}
+                    <div className="flex items-center gap-10">
+                        <Link to="/" className="flex items-center gap-3 group">
+                            {/* Simple Blue/Green Chevron Logo */}
+                            <div className="relative w-8 h-8 md:w-10 md:h-10 flex items-center justify-center">
+                                <div className="absolute w-3 h-full bg-[#38bdf8] skew-x-[20deg] rounded-sm transform -translate-x-1 group-hover:scale-105 transition-transform"></div>
+                                <div className="absolute w-3 h-4/5 bg-[#16a34a] -skew-x-[20deg] rounded-sm transform translate-x-2 translate-y-1 group-hover:scale-105 transition-transform"></div>
+                            </div>
+                            <div className="flex flex-col justify-center">
+                                <span className="text-[22px] md:text-[26px] font-extrabold tracking-tight text-white leading-none">
+                                    NextStep
+                                </span>
+                                <span className="text-[11px] md:text-[13px] font-semibold text-[#fbbf24] uppercase tracking-[0.15em] mt-0.5 leading-none">
+                                    UAE Careers
+                                </span>
+                            </div>
+                        </Link>
 
-                    {/* Desktop Menu */}
-                    <div className="hidden md:flex items-center space-x-8">
-                        {navLinks.map((link) => (
-                            <Link
-                                key={link.name}
-                                to={link.path}
-                                className="text-[var(--color-text-secondary)] hover:text-[var(--color-accent)] transition-colors text-sm font-medium"
-                            >
-                                {link.name}
-                            </Link>
-                        ))}
-
-                        {/* Theme Toggle */}
-                        <button
-                            onClick={toggleTheme}
-                            className="p-2 rounded-full hover:bg-[var(--color-bg-secondary)] text-[var(--color-text-primary)] transition-colors cursor-pointer"
-                            aria-label="Toggle Theme"
-                        >
-                            {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
-                        </button>
-
-                        <Button serviceName="General Enquiry" className="px-6 py-2 text-sm">
-                            Chat with Us
-                        </Button>
+                        {/* Desktop Links */}
+                        <div className="hidden lg:flex items-center gap-1">
+                            {[
+                                { path: '/', label: 'Home' },
+                                { path: '/services', label: 'Services' },
+                                { path: '/about', label: 'About' },
+                                { path: '/contact', label: 'Contact' }
+                            ].map((link) => (
+                                <Link
+                                    key={link.path}
+                                    to={link.path}
+                                    className={`px-4 py-2 rounded-lg font-bold text-sm transition-all duration-200 ${isActive(link.path)
+                                            ? 'bg-white/10 text-[#34d399]'
+                                            : 'text-white/80 hover:bg-white/5 hover:text-white'
+                                        }`}
+                                >
+                                    {link.label}
+                                </Link>
+                            ))}
+                        </div>
                     </div>
 
-                    {/* Mobile Toggle & Menu */}
+                    {/* Desktop Right Side - Badge */}
+                    <div className="hidden md:flex items-center space-x-4">
+                        <div className="flex items-center gap-2 bg-[#fef08a]/20 backdrop-blur-sm border border-[#fef08a]/30 text-yellow-100 px-4 py-1.5 rounded-full text-sm font-medium">
+                            <Clock size={16} className="text-[#fbbf24]" />
+                            Limited slots available
+                        </div>
+                    </div>
+
+                    {/* Mobile Toggle */}
                     <div className="flex items-center gap-4 md:hidden">
                         <button
-                            onClick={toggleTheme}
-                            className="p-2 rounded-full hover:bg-[var(--color-bg-secondary)] text-[var(--color-text-primary)] transition-colors"
-                        >
-                            {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
-                        </button>
-
-                        <button
-                            className="text-[var(--color-text-primary)] focus:outline-none"
+                            className="focus:outline-none text-white"
                             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                         >
-                            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                            {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
                         </button>
                     </div>
                 </div>
@@ -107,30 +90,35 @@ const Navbar = () => {
 
             {/* Mobile Menu Overlay */}
             <div
-                className={`fixed inset-0 bg-[var(--color-bg-primary)] z-30 flex flex-col items-center justify-center space-y-8 transition-transform duration-300 md:hidden ${mobileMenuOpen ? 'translate-y-0' : '-translate-y-full'
+                className={`fixed inset-0 bg-[#0a1930] z-30 flex flex-col items-center justify-center space-y-8 transition-transform duration-300 md:hidden ${mobileMenuOpen ? 'translate-y-0' : '-translate-y-full'
                     }`}
-                style={{ top: '0', paddingTop: '80px' }} // Ensure it covers screen but respects header z-index if needed
+                style={{ top: '0', paddingTop: '80px' }}
             >
-                {navLinks.map((link) => (
-                    <Link
-                        key={link.name}
-                        to={link.path}
-                        className="text-2xl font-bold text-[var(--color-text-primary)] hover:text-[var(--color-accent)]"
-                    >
-                        {link.name}
-                    </Link>
-                ))}
-
-                {/* Mobile Socials */}
-                <div className="flex gap-6 mt-4 text-[var(--color-text-primary)]">
-                    <a href="#"><Instagram size={24} /></a>
-                    <a href="#"><Linkedin size={24} /></a>
-                    <a href="#"><Facebook size={24} /></a>
+                <div className="flex flex-col items-center gap-4 mt-8 w-full max-w-[200px]">
+                    {[
+                        { path: '/', label: 'Home' },
+                        { path: '/services', label: 'Services' },
+                        { path: '/about', label: 'About' },
+                        { path: '/contact', label: 'Contact' }
+                    ].map((link) => (
+                        <Link
+                            key={link.path}
+                            to={link.path}
+                            onClick={() => setMobileMenuOpen(false)}
+                            className={`w-full text-center px-4 py-3 rounded-xl font-bold text-xl transition-all ${isActive(link.path)
+                                    ? 'bg-white/10 text-[#34d399]'
+                                    : 'text-white/80 hover:bg-white/5 hover:text-white'
+                                }`}
+                        >
+                            {link.label}
+                        </Link>
+                    ))}
                 </div>
 
-                <Button serviceName="General Enquiry" className="mt-8">
-                    Chat on WhatsApp
-                </Button>
+                <div className="flex items-center gap-2 bg-[#fef08a]/20 border border-[#fef08a]/30 text-yellow-100 px-4 py-2 rounded-full text-sm font-medium mt-8">
+                    <Clock size={16} className="text-[#fbbf24]" />
+                    Limited slots available
+                </div>
             </div>
         </header>
     );

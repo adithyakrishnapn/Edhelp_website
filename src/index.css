@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -18,14 +19,14 @@
 }
 
 :root {
-  /* Light Theme (Professional Default) */
+  /* NextStep UAE Theme Colors - Light */
   --bg-primary: #ffffff;
-  --bg-secondary: #f8f9fa;
-  --text-primary: #1a202c;
-  --text-secondary: #4a5568;
-  --accent: #2563eb;
-  /* Royal Blue */
-  --accent-hover: #1d4ed8;
+  --bg-secondary: #f0f7fb;
+  --text-primary: #0a1930;
+  --text-secondary: #4b5563;
+  --accent: #15803d;
+  /* Green for WhatsApp button */
+  --accent-hover: #166534;
   --border: #e2e8f0;
 }
 
@@ -55,7 +56,6 @@ h4,
 h5,
 h6 {
   font-family: var(--font-display);
-  color: var(--text-primary);
 }
 
 @keyframes fade-in {

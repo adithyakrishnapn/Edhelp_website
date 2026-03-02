@@ -6,10 +6,12 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import { ThemeProvider } from './context/ThemeContext';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
+import ScrollToTop from './components/ScrollToTop';
 
 export default function App() {
   return (
     <ThemeProvider>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/services" element={<Services />} />
